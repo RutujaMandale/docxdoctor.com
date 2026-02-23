@@ -1,12 +1,15 @@
+````html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Free Doc Audit Tool — Docx.Doctor</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -82,7 +85,7 @@
     .file-remove { margin-left: auto; background: none; border: none; color: var(--gray); cursor: pointer; font-size: 1.1rem; padding: 0.3rem 0.6rem; border-radius: 4px; }
     .file-remove:hover { color: #ef4444; }
 
-    /* DOC TYPE PILLS — matches .stag style from live site */
+    /* DOC TYPE PILLS */
     .type-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.7rem; margin-top: 1.4rem; }
     .type-label::before { content: '— '; }
     .doc-type-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
@@ -90,7 +93,7 @@
     .doc-type-btn:hover { border-color: var(--blue); }
     .doc-type-btn.selected { background: var(--blue); color: var(--white); border-color: var(--blue); }
 
-    /* AUDIT BUTTON — matches .btn-blue from live site */
+    /* AUDIT BUTTON */
     .audit-btn { width: 100%; margin-top: 1.5rem; background: var(--blue); color: var(--white); border: none; border-radius: 50px; padding: 1rem 2rem; font-family: var(--font-b); font-size: 0.95rem; font-weight: 600; letter-spacing: 0.04em; cursor: pointer; transition: transform 0.15s, box-shadow 0.2s; display: flex; align-items: center; justify-content: center; gap: 0.6rem; box-shadow: 0 4px 20px rgba(26,86,219,0.35); }
     .audit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(26,86,219,0.45); }
 
@@ -107,7 +110,7 @@
     .results { display: none; }
     .results.show { display: block; }
 
-    /* SCORE CARD — dark navy like the hero/process sections on live site */
+    /* SCORE CARD */
     .score-card { background: var(--navy); border-radius: 20px; padding: 2.5rem; margin-bottom: 1.5rem; text-align: center; position: relative; overflow: hidden; }
     .score-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 120%, rgba(26,86,219,0.5) 0%, transparent 65%); }
     .score-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sky); font-weight: 700; margin-bottom: 0.8rem; position: relative; z-index: 1; }
@@ -116,7 +119,7 @@
     .score-grade { display: inline-block; margin-top: 0.8rem; padding: 0.4rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; position: relative; z-index: 1; }
     .score-summary { margin-top: 1rem; font-size: 0.92rem; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 500px; margin-left: auto; margin-right: auto; position: relative; z-index: 1; }
 
-    /* CATEGORIES — white cards like service cards */
+    /* CATEGORIES */
     .categories { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.8rem; margin-bottom: 1.5rem; }
     .cat-card { background: var(--white); border-radius: 14px; padding: 1.1rem 0.6rem; text-align: center; border: 1px solid rgba(26,86,219,0.08); transition: transform 0.2s, box-shadow 0.2s; }
     .cat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(11,31,74,0.1); }
@@ -143,7 +146,7 @@
     .ftext strong { font-weight: 600; display: block; }
     .ftext span { color: var(--gray); font-weight: 300; font-size: 0.83rem; margin-top: 0.2rem; display: block; }
 
-    /* CTA — matches the contact section dark style on live site */
+    /* CTA */
     .result-cta { background: var(--navy); border-radius: 20px; padding: 2.5rem; text-align: center; position: relative; overflow: hidden; }
     .result-cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 110%, rgba(26,86,219,0.4) 0%, transparent 65%); }
     .result-cta h3 { font-family: var(--font-d); font-size: 1.8rem; font-weight: 900; color: white; margin-bottom: 0.8rem; position: relative; z-index: 1; }
@@ -161,7 +164,7 @@
     .reset-btn { display: block; width: 100%; margin-top: 1rem; background: transparent; color: var(--gray); border: 1px solid #e2e8f0; border-radius: 50px; padding: 0.85rem; font-family: var(--font-b); font-size: 0.88rem; font-weight: 500; cursor: pointer; transition: all 0.2s; letter-spacing: 0.02em; }
     .reset-btn:hover { border-color: var(--blue); color: var(--blue); }
 
-    /* FOOTER — matches live site */
+    /* FOOTER */
     footer { background: var(--navy); padding: 2rem 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 5rem; }
     .footer-logo { font-family: var(--font-d); font-size: 1.3rem; font-weight: 900; color: var(--white); text-decoration: none; }
     .footer-logo .dot { color: var(--blue); } .footer-logo .doc { color: var(--mint); }
@@ -174,8 +177,8 @@
     @media (max-width: 650px) { .categories { grid-template-columns: repeat(3, 1fr); } .cta-row { flex-direction: column; align-items: center; } }
   </style>
 </head>
-<body>
 
+<body>
 <nav>
   <a href="https://www.docxdoctor.com" class="nav-logo">Docx<span class="dot">.</span><span class="doc">Doctor</span></a>
   <ul class="nav-links" style="display:flex;gap:2.5rem;list-style:none;align-items:center">
@@ -279,7 +282,7 @@
       <h3>Ready to <em>Fix</em> Your Docs?</h3>
       <p>Let Docx.Doctor professionally rewrite and restructure your documentation — so your users, developers, and investors actually understand your product.</p>
       <div class="cta-row">
-        <a href="mailto:mandale.rutuja12@gmail.com?subject=Documentation Help&body=Hi, I just ran a doc audit and I'd like professional help improving my documentation." class="cta-btn cta-primary">📩 Get Professional Help</a>
+        <a href="mailto:mandale.rutuja12@gmail.com?subject=Documentation%20Help&body=Hi,%20I%20just%20ran%20a%20doc%20audit%20and%20I'd%20like%20professional%20help%20improving%20my%20documentation." class="cta-btn cta-primary">📩 Get Professional Help</a>
         <a href="https://www.docxdoctor.com" class="cta-btn cta-secondary">Learn More →</a>
       </div>
     </div>
@@ -317,7 +320,8 @@
   }
   const avgSentLen = t => { const s = splitSentences(t); return s.length ? splitWords(t).length / s.length : 0; };
   const passiveRatio = t => { const s = splitSentences(t); if (!s.length) return 0; const m = t.match(PASSIVE); return (m ? m.length : 0) / s.length; };
-  const hasPattern = (t, r) => r.test(t);
+
+  const clamp = v => Math.max(0, Math.min(100, Math.round(v)));
 
   // ── SCORING FUNCTIONS ──
   function scoreClarity(text) {
@@ -391,8 +395,6 @@
     s -= longParas * 5;
     return clamp(s);
   }
-
-  const clamp = v => Math.max(0, Math.min(100, Math.round(v)));
 
   // ── ISSUES ──
   function buildIssues(text, cats, docType) {
@@ -477,14 +479,12 @@
       document.getElementById('loadingMsg').textContent = msgs[mi++ % msgs.length];
     }, 400);
 
-    // Animate progress bar
     let prog = 0;
     const progIv = setInterval(() => {
       prog = Math.min(prog + 3, 90);
       document.getElementById('progressBar').style.width = prog + '%';
     }, 80);
 
-    // Simulate analysis time then show results
     setTimeout(() => {
       clearInterval(msgIv);
       clearInterval(progIv);
@@ -508,7 +508,6 @@
         const weakFound = WEAK.filter(w => new RegExp(`\\b${w}\\b`,'i').test(content));
         const jFound = JARGON.filter(j => new RegExp(`\\b${j}\\b`,'i').test(content));
 
-        // Overall score
         document.getElementById('overallScore').innerHTML = `${overall}<span class="score-denom">/100</span>`;
         const gradeEl = document.getElementById('scoreGrade');
         gradeEl.textContent = grade.label;
@@ -516,7 +515,6 @@
         gradeEl.style.color = 'white';
         document.getElementById('scoreSummary').textContent = getSummary(overall, docType);
 
-        // Categories
         const catMeta = [
           { key:'clarity', icon:'💬', name:'Clarity' },
           { key:'structure', icon:'🏗️', name:'Structure' },
@@ -535,13 +533,18 @@
         // Word highlights
         if (weakFound.length || jFound.length) {
           document.getElementById('wordSection').style.display = 'block';
-          if (weakFound.length) document.getElementById('weakWordsWrap').innerHTML =
-            `<div class="chips-label">Filler / Weak Words (${weakFound.length} found)</div><div class="chips">${weakFound.map(w=>`<span class="chip chip-red">${w}</span>`).join('')}</div>`;
-          if (jFound.length) document.getElementById('jargonWrap').innerHTML =
-            `<div class="chips-label" style="margin-top:1rem">Jargon / Buzzwords (${jFound.length} found)</div><div class="chips">${jFound.map(w=>`<span class="chip chip-yellow">${w}</span>`).join('')}</div>`;
+          document.getElementById('weakWordsWrap').innerHTML = weakFound.length
+            ? `<div class="chips-label">Filler / Weak Words (${weakFound.length} found)</div><div class="chips">${weakFound.map(w=>`<span class="chip chip-red">${w}</span>`).join('')}</div>`
+            : '';
+          document.getElementById('jargonWrap').innerHTML = jFound.length
+            ? `<div class="chips-label" style="margin-top:1rem">Jargon / Buzzwords (${jFound.length} found)</div><div class="chips">${jFound.map(w=>`<span class="chip chip-yellow">${w}</span>`).join('')}</div>`
+            : '';
+        } else {
+          document.getElementById('wordSection').style.display = 'none';
+          document.getElementById('weakWordsWrap').innerHTML = '';
+          document.getElementById('jargonWrap').innerHTML = '';
         }
 
-        // Issues
         const sevDot = { high: 'd-red', medium: 'd-yellow', low: 'd-green' };
         document.getElementById('issuesList').innerHTML = issues.length
           ? issues.map(i => `<div class="finding"><div class="fdot ${sevDot[i.sev]}"></div><div class="ftext"><strong>${i.title}</strong><span>${i.detail}</span></div></div>`).join('')
@@ -585,7 +588,9 @@
   }
 
   function handleFile(e) {
-    const file = e.target.files[0]; if (!file) return;
+    const file = e?.target?.files?.[0];
+    if (!file) return;
+
     document.getElementById('fileDrop').style.display = 'none';
     document.getElementById('fileSelected').classList.add('show');
     document.getElementById('fileName').textContent = file.name;
@@ -598,8 +603,10 @@
       const fr = new FileReader();
       fr.onload = ev => { window._fileText = ev.target.result; };
       fr.readAsText(file);
+      return;
+    }
 
-    } else if (ext === 'pdf') {
+    if (ext === 'pdf') {
       const fr = new FileReader();
       fr.onload = async ev => {
         try {
@@ -618,8 +625,10 @@
         }
       };
       fr.readAsArrayBuffer(file);
+      return;
+    }
 
-    } else if (ext === 'docx' || ext === 'doc') {
+    if (ext === 'docx' || ext === 'doc') {
       const fr = new FileReader();
       fr.onload = async ev => {
         try {
@@ -631,11 +640,11 @@
         }
       };
       fr.readAsArrayBuffer(file);
-
-    } else {
-      alert('Unsupported file type. Please upload a PDF, Word (.docx), or text (.txt) file.');
-      removeFile();
+      return;
     }
+
+    alert('Unsupported file type. Please upload a PDF, Word (.docx), or text (.txt) file.');
+    removeFile();
   }
 
   function removeFile() {
@@ -645,7 +654,39 @@
     window._fileText = null;
   }
 
+  // Drag/drop wiring
   const fd = document.getElementById('fileDrop');
-  fd.addEventListener('dragover', e => { e.preventDefault(); fd.style.borderColor='var(--blue)'; fd.style.background='rgba(26,86,219,0.08)'; });
-  fd.addEventListener('dragleave', () => { fd.style.borderColor=''; fd.style.background=''; });
-  fd.addEventListener('drop', e => { e.preventDefault(); fd.style.borderColor=''; fd.style.background=''; if (e.dataTransfer.files[0]) handleFile({ target: 
+
+  fd.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    fd.style.borderColor = 'var(--blue)';
+    fd.style.background = 'rgba(26,86,219,0.08)';
+  });
+
+  fd.addEventListener('dragleave', () => {
+    fd.style.borderColor = '';
+    fd.style.background = '';
+  });
+
+  fd.addEventListener('drop', (e) => {
+    e.preventDefault();
+    fd.style.borderColor = '';
+    fd.style.background = '';
+
+    if (e.dataTransfer?.files?.length) {
+      handleFile({ target: { files: e.dataTransfer.files } });
+    }
+  });
+
+  // ✅ Make inline onclick handlers reliable
+  window.switchTab = switchTab;
+  window.selectType = selectType;
+  window.handleFile = handleFile;
+  window.removeFile = removeFile;
+  window.runAudit = runAudit;
+  window.resetAudit = resetAudit;
+</script>
+
+</body>
+</html>
+````
