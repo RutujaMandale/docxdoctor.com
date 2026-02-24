@@ -393,7 +393,7 @@
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 960px) {
-      .nav-links li:not(:last-child) { display: none; }
+      .nav-links li:not(:last-child):not(:nth-last-child(2)):not(:nth-last-child(3)) { display: none; }
       .services-intro { grid-template-columns: 1fr; gap: 1.5rem; }
       .services-grid { grid-template-columns: 1fr 1fr; }
       .process-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -420,6 +420,8 @@
     <li><a href="#services">Services</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#why">Why Us</a></li>
+    <li><a href="doc-audit-tool.html">Doc Audit</a></li>
+    <li><a href="template-library.html">Templates</a></li>
     <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
   </ul>
 </nav>
@@ -691,6 +693,8 @@
   <ul class="footer-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#process">Process</a></li>
+    <li><a href="doc-audit-tool.html">Doc Audit</a></li>
+    <li><a href="template-library.html">Templates</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </footer>
